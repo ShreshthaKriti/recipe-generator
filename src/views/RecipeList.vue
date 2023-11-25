@@ -1,7 +1,11 @@
 <template>
     <div>
       <h1>Recipes</h1>
-        {{ recipes }}
+      <ul v-for="recipe in recipes">
+        <li>
+            {{ recipe.title }}
+        </li>
+      </ul>
     </div>
   </template>
   

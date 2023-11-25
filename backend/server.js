@@ -13,7 +13,6 @@ app.use(express.json());
 app.get('/api/recipes', async (req, res) => {
   try {
     const recipes = await Recipe.find({});
-    console.log('response of api', recipes)
     res.json(recipes);
   } catch (error) {
     res.status(500).json({ message: error.message });
