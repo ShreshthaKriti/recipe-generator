@@ -1,12 +1,12 @@
 <template>
    <div class="main-wrapper">
-    <v-toolbar fixed color="#87D37C">
-    <v-btn
+    <v-toolbar fixed color="#adc178">
+    <!-- <v-btn
       icon
       class="hidden-xs-only"
     >
       <v-icon>mdi-arrow-left</v-icon>
-    </v-btn>
+    </v-btn> -->
     <v-toolbar-title class="toolbar-title">Recipes</v-toolbar-title>
     <v-btn
       icon
@@ -20,7 +20,7 @@
     <div v-for="recipe in recipes" :key="recipe.id" class="recipe-card">
       <v-card theme="light">
         <div class="card-content">
-          <v-avatar class="recipe-image" size="125" rounded="0">
+          <v-avatar class="recipe-image" size="150" rounded="0">
             <v-img :src="recipe.media.images['ratio_16:9'].url" v-if="recipe.media.images['ratio_16:9']" cover></v-img>
           </v-avatar>
           
@@ -28,11 +28,22 @@
             <v-card-title class="recipe-title">{{ recipe.title }}</v-card-title>
             <br/>
             <v-card-subtitle class="recipe-subtitle">{{ recipe.media.images['ratio_1:1'].caption }}</v-card-subtitle>
-            <v-card-actions>
-              <div>Rating: {{ recipe.rating.stars }}</div>
-              <div>Votes: {{ recipe.rating.votes }}</div>
+
+            <v-card-actions class="action-items">
+              <div class="rating-and-votes">
+                <div class="rating">
+                  Rating:
+                  <v-icon v-for="star in recipe.rating.stars" :key="star" color="yellow">
+                    mdi-star
+                  </v-icon>
+                </div>
+                <div class="votes">
+                  Votes: {{ recipe.rating.votes }}
+                </div>
+              </div>
               <v-btn color="orange-lighten-2" variant="text">Explore</v-btn>
             </v-card-actions>
+
           </div>
         </div>
       </v-card>
@@ -43,7 +54,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar} from 'vuetify/components';
+import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText} from 'vuetify/components';
 
 const recipes = ref([]);
 
@@ -74,13 +85,13 @@ onMounted(fetchRecipes);
 }
 
 .main-wrapper {
-  background-color: #D6E8C0;
+  background-color: #dde5b6;
   min-height: 100vh;
 }
 
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
   gap: 1rem;
   padding: 1rem;
 }
@@ -95,7 +106,7 @@ onMounted(fetchRecipes);
   display: flex;
   flex: 1;
   justify-content: space-between;
-  margin: 2%;
+  margin: 1%;
 }
 
 .card-text {
@@ -115,6 +126,23 @@ onMounted(fetchRecipes);
   font-size: 0.9em;
   color: var(--text-color-blac);
   margin-top: 5%;
+}
+
+.action-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating-and-votes {
+  display: flex;
+  gap: 1em; /* Adjust the gap as needed */
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25em; /* Adjust the gap between stars as needed */
 }
 
 </style>
