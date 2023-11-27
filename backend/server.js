@@ -19,7 +19,21 @@ app.get('/api/recipes', async (req, res) => {
   }
 });
 
-// More routes as needed
+app.get('/api/recipes/:id', async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (recipe) {
+      res.json(recipe);
+    } else {
+      res.status(404).json({ message: 'Recipe not found' });
+    }
+  } catch (error) {
+    if (error.name === 'CastError') {
+      return res.status(400).json({ message: 'Invalid recipe id' });
+    }
+    res.status(500).json({ message: error.message });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

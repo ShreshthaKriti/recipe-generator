@@ -41,7 +41,7 @@
                   Votes: {{ recipe.rating.votes }}
                 </div>
               </div>
-              <v-btn color="#a98467" variant="text" @click="goToRecipeDetail(recipe.recipeId)">Explore</v-btn>
+              <v-btn color="#a98467" variant="text" @click="goToRecipeDetail(recipe._id)">Explore</v-btn>
             </v-card-actions>
 
           </div>
