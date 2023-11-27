@@ -1,9 +1,6 @@
 <template>
    <div class="main-wrapper">
-    <v-toolbar fixed color="#adc178">
-    <v-toolbar-title class="toolbar-title">Recipes</v-toolbar-title>
-    <ShoppingCart/>
-  </v-toolbar>
+    <Toolbar title="Recipes" />
 
   <div class="recipe-grid">
     <div v-for="recipe in recipes" :key="recipe.id" class="recipe-card">
@@ -43,9 +40,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText} from 'vuetify/components'
+import { VBtn, VIcon, VCard, VCardActions, VImg, VAvatar } from 'vuetify/components'
 import { useRouter } from 'vue-router'
-import ShoppingCart from '../components/ShoppingCart.vue'
+import Toolbar from '../components/Toolbar.vue';
 
 const router = useRouter()
 const recipes = ref([])
