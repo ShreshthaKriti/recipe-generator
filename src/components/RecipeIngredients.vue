@@ -15,34 +15,70 @@
         </li>
       </ul>
     </div>
-    <v-btn>Add missing ingredients</v-btn>
+    <v-btn @click="addMissingIngredientsToShoppingCart">Add missing ingredients</v-btn>
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
 import { useIngredientStore } from '@/stores/ingredientStore'
-
-const ingredientStore = useIngredientStore()
+import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
   ingredientGroups: Array,
 });
 
+const ingredientStore = useIngredientStore();
+const allIngredients = ref([]);
+
 const getIngredientClass = (ingredientName) => {
   const owned = ingredientStore.ownedIngredients.some(i => i.name === ingredientName);
   return owned ? 'owned-ingredient' : 'missing-ingredient';
+};
+
+const populateAllIngredients = () => {
+  allIngredients.value = [];
+  if (props.ingredientGroups) {
+    props.ingredientGroups.forEach(group => {
+      allIngredients.value.push(...group.ingredientGroupIngredients)
+    })
+  }
 }
+
+const findMissingIngredients = (recipeIngredients) => {
+  return recipeIngredients
+    .filter(ingredient => 
+      !ingredientStore.ownedIngredients.some(owned => owned.name === ingredient.ingredient)
+    )
+    .map(ingredient => ({
+      name: ingredient.ingredient,
+      quantity: ingredient.quantity,
+      unit: ingredient.unit,
+    }))
+}
+
+const addMissingIngredientsToShoppingCart = () => {
+  const missingIngredients = findMissingIngredients(allIngredients.value);
+  missingIngredients.forEach(ingredient => ingredientStore.addToShoppingCart(ingredient));
+}
+
+watch(() => props.ingredientGroups, (newVal) => {
+  if (newVal) {
+    populateAllIngredients();
+  }
+}, { deep: true })
+
+onMounted(populateAllIngredients)
 </script>
 
 <style scoped>
   .ingredients {
-    background-color: #bb8588;
+    background-color: #bb8588
   }
 	.owned-ingredient {
-		color: darkgreen;
+		color: darkgreen
 	}
 	.missing-ingredient {
-		color: maroon;
+		color: maroon
 	}
 </style>
