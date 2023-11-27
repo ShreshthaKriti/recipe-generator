@@ -41,7 +41,7 @@
                   Votes: {{ recipe.rating.votes }}
                 </div>
               </div>
-              <v-btn color="orange-lighten-2" variant="text">Explore</v-btn>
+              <v-btn color="#a98467" variant="text" @click="goToRecipeDetail(recipe.recipeId)">Explore</v-btn>
             </v-card-actions>
 
           </div>
@@ -55,7 +55,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText} from 'vuetify/components';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const recipes = ref([]);
 
 const fetchRecipes = async () => {
@@ -70,6 +72,10 @@ const fetchRecipes = async () => {
     console.error('Network error:', error);
   }
 };
+
+const goToRecipeDetail = (id) => {
+  router.push({ name: 'recipeDetail', params: { id } });
+}
 
 onMounted(fetchRecipes);
 </script>
@@ -118,7 +124,7 @@ onMounted(fetchRecipes);
   font-weight: bold;
   font-size: 1.2em;
   text-transform: capitalize;
-  color: var(--primary-color);
+  color: #6c584c;
 }
 
 .recipe-subtitle {
