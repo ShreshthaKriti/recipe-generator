@@ -60,6 +60,9 @@
           <div>
             <v-icon>mdi-star</v-icon> Rating: {{ recipeDetail.rating.stars }}
           </div>
+          <div v-if="recipeDetail.url">
+            <qrcode-vue :value="recipeDetail.url" :size="200"></qrcode-vue>
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -70,6 +73,7 @@
   import { ref, onMounted, computed } from 'vue'
   import { useRoute } from 'vue-router'
   import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText, VChip} from 'vuetify/components'
+  import QrcodeVue from 'qrcode.vue'
 
   const route = useRoute()
 
