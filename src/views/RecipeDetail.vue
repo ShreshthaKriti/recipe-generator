@@ -3,6 +3,7 @@
     <v-row>
     <v-toolbar fixed color="#adc178">
       <v-toolbar-title class="toolbar-title">Recipes</v-toolbar-title>
+      <Pantry />
       <ShoppingCart/>
     </v-toolbar>
     </v-row>
@@ -44,6 +45,7 @@
   import RecipeSteps from '../components/RecipeSteps.vue'
   import RecipeExtraInfo from '../components/RecipeExtraInfo.vue'
   import RecipeIngredientsVue from '../components/RecipeIngredients.vue'
+  import Pantry from '../components/Pantry.vue'
 
   const route = useRoute()
 

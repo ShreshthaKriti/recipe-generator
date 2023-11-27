@@ -1,19 +1,8 @@
 <template>
    <div class="main-wrapper">
     <v-toolbar fixed color="#adc178">
-    <!-- <v-btn
-      icon
-      class="hidden-xs-only"
-    >
-      <v-icon>mdi-arrow-left</v-icon>
-    </v-btn> -->
     <v-toolbar-title class="toolbar-title">Recipes</v-toolbar-title>
-    <v-btn
-      icon
-      class="hidden-xs-only"
-    >
-      <v-icon>mdi-cart-outline</v-icon>
-    </v-btn>
+    <ShoppingCart/>
   </v-toolbar>
 
   <div class="recipe-grid">
@@ -53,31 +42,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText} from 'vuetify/components';
-import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue'
+import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText} from 'vuetify/components'
+import { useRouter } from 'vue-router'
+import ShoppingCart from '../components/ShoppingCart.vue'
 
-const router = useRouter();
-const recipes = ref([]);
+const router = useRouter()
+const recipes = ref([])
 
 const fetchRecipes = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/recipes');
+    const response = await fetch('http://localhost:3000/api/recipes')
     if (response.ok) {
-      recipes.value = await response.json();
+      recipes.value = await response.json()
     } else {
-      console.error('Error fetching recipes:', response.statusText);
+      console.error('Error fetching recipes:', response.statusText)
     }
   } catch (error) {
-    console.error('Network error:', error);
+    console.error('Network error:', error)
   }
-};
-
-const goToRecipeDetail = (id) => {
-  router.push({ name: 'recipeDetail', params: { id } });
 }
 
-onMounted(fetchRecipes);
+const goToRecipeDetail = (id) => {
+  router.push({ name: 'recipeDetail', params: { id } })
+}
+
+onMounted(fetchRecipes)
 </script>
 
 <style scoped>
