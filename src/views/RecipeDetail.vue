@@ -1,6 +1,44 @@
 <template>
   <v-container fluid v-if="recipeDetail && recipeDetail.media && recipeDetail.media.images['ratio_16:9']">
     <v-row>
+    <v-toolbar fixed color="#adc178">
+      <v-toolbar-title class="toolbar-title">Recipes</v-toolbar-title>
+      
+      <v-dialog 
+        scrollable
+        width="auto"
+      >
+        <template v-slot:activator="{ props }">
+          <v-btn
+            icon
+            class="hidden-xs-only"
+            v-bind="props"
+          >
+            <v-icon>mdi-cart-outline</v-icon>
+          </v-btn>
+        </template>
+
+        <template v-slot:default="{ isActive }">
+          <v-card title="Shopping Cart">
+            <v-card-text>
+              Shopping Cart
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn
+                text="Exit"
+                @click="isActive.value = false"
+              ></v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
+
+  </v-toolbar>
+    </v-row>
+    <v-row>
       <v-col cols="12" md="8">
         <v-img
           :src="recipeDetail.media.images['ratio_16:9'].url"
@@ -72,13 +110,18 @@
  <script setup>
   import { ref, onMounted, computed } from 'vue'
   import { useRoute } from 'vue-router'
-  import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText, VChip} from 'vuetify/components'
+  import { VToolbar, VToolbarTitle, VBtn, VIcon, VCard, VCardActions, VImg, VAvatar, VCardText, VChip, VDialog} from 'vuetify/components'
   import QrcodeVue from 'qrcode.vue'
 
   const route = useRoute()
 
   const recipeDetail = ref(null)
   const recipeId = ref(route.params.id)
+  const dialog = ref(false)
+
+  const toggleDialog = () => {
+    dialog.value = !dialog.value;
+  }
 
   const fetchRecipeDetail = async () => {
     try {
