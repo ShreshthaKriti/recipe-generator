@@ -10,7 +10,7 @@
       <v-card-title class="text-h5">Your Shopping Cart</v-card-title>
       <v-card-text>
         <v-list>
-          <v-list-item v-for="(item, index) in cartItems" :key="index">
+          <v-list-item v-for="(item, index) in store.ownedIngredients" :key="index">
             <v-list-item-content>
               <v-list-item-title>{{ item.quantity }} {{ item.unit }} {{ item.name }}</v-list-item-title>
             </v-list-item-content>
@@ -30,13 +30,11 @@
   import { ref, onMounted, computed } from 'vue'
   import { useRoute } from 'vue-router'
   import { VBtn, VIcon, VCard, VCardActions, VCardText, VDialog} from 'vuetify/components'
+  import { useIngredientStore } from '../stores/IngredientStore'
+
+  const store = useIngredientStore()
 
   const dialog = ref(false)
-
-  const cartItems = ref([
-  { name: 'Blumenkohl', quantity: 2, unit: 'g' },
-  { name: 'Butter', quantity: 1,  unit: 'g' },
-  ]);
 
   const checkout = () => {
     alert('Proceed to checkout')
