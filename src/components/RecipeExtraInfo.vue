@@ -28,8 +28,9 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .rating {
     background-color: #d8a48f;
+    color: var(--text-color-black);
   }
 </style>
