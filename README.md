@@ -32,3 +32,5 @@ npm install
 ```
 ```sh
 npm start
+```
+Go to /recipes
