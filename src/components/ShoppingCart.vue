@@ -20,7 +20,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn :disabled="isCartEmpty" text @click="clearCart">Clear Cart</v-btn>
+        <v-btn :disabled="isCartEmpty" text @click="clearCart">Clear Added Items</v-btn>
         <v-btn color="primary" text @click="closeCart">Close</v-btn>
       </v-card-actions>
     </v-card>

@@ -1,13 +1,15 @@
 import { defineStore } from 'pinia';
 import { computed, reactive, toRefs } from "vue";
 
+const ownedIngredients = [
+  { name: 'Blumenkohl', quantity: 2, unit: 'g' },
+  { name: 'Butter', quantity: 1,  unit: 'g' },
+]
+
 export const useIngredientStore = defineStore('ingredientStore', () => {
   const state = reactive({
-    ownedIngredients: [
-      { name: 'Blumenkohl', quantity: 2, unit: 'g' },
-      { name: 'Butter', quantity: 1,  unit: 'g' },
-    ],
-    shoppingCart: [],
+    ownedIngredients: ownedIngredients,
+    shoppingCart: [...ownedIngredients],
   })
 
   const addToShoppingCart = (ingredient) => {
@@ -15,7 +17,7 @@ export const useIngredientStore = defineStore('ingredientStore', () => {
   }
 
   const clearShoppingCart = () => {
-    state.shoppingCart = [];
+    state.shoppingCart = [...ownedIngredients];
   };
 
   return {
