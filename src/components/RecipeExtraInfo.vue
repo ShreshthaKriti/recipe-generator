@@ -9,7 +9,7 @@
         <v-icon>mdi-chef-hat</v-icon> Difficulty: {{ difficulty }}
       </div>
       <div>
-        <v-icon>mdi-star</v-icon> Rating: {{ rating }}
+        <v-icon>mdi-star</v-icon> Rating: {{ rating }} stars
       </div>
     </div>
     
@@ -36,7 +36,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .rating {
-  background-color: #d8a48f;
+  background-color: rgb(13, 153, 255, 0.5);
   color: var(--text-color-black);
   padding: 2%;
   padding-left: 5%;

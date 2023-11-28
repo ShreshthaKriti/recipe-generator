@@ -14,7 +14,10 @@ export const useIngredientStore = defineStore('ingredientStore', () => {
 
   const addToShoppingCart = (ingredient) => {
     state.shoppingCart.push(ingredient);
-  }
+    if (!state.ownedIngredients.some(owned => owned.name === ingredient.name)) {
+      state.ownedIngredients.push(ingredient);
+    }
+  };  
 
   const clearShoppingCart = () => {
     state.shoppingCart = [...ownedIngredients];

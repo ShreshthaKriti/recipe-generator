@@ -19,7 +19,7 @@ const props = defineProps({
 .label-box {
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(216, 164, 143, 0.7);
+  background-color: rgb(13, 153, 255, 0.3);
   font-family: 'Inter', sans-serif;
   padding-left: 2%;
   padding-right: 2%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="ingredients mb-4">
+  <div class="ingredients mb-4" :key="refreshKey">
     <h3 class="title">Ingredient list</h3>
     <div v-if="ingredientGroups">
       <ul v-for="ingredientList in ingredientGroups" :key="ingredientList.name">
@@ -9,6 +9,8 @@
             <li v-for="ingredient in ingredientList.ingredientGroupIngredients" 
                 :key="ingredient.ingredient" 
                 :class="getIngredientClass(ingredient.ingredient)">
+              <v-icon v-if="isOwned(ingredient.ingredient)">mdi-check</v-icon>
+              <v-icon v-else>mdi-close</v-icon>
               {{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.ingredient }}
             </li>
           </ul>
@@ -21,10 +23,10 @@
   </div>
 </template>
 
+
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, onMounted, ref, watch } from 'vue'
 import { useIngredientStore } from '@/stores/ingredientStore'
-import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
   ingredientGroups: Array,
@@ -32,6 +34,16 @@ const props = defineProps({
 
 const ingredientStore = useIngredientStore();
 const allIngredients = ref([]);
+
+const refreshKey = ref(0);
+
+watch(() => ingredientStore.ownedIngredients, (newVal) => {
+}, { deep: true });
+
+const refreshIngredients = () => {
+  refreshKey.value++;
+  populateAllIngredients();
+}
 
 const getIngredientClass = (ingredientName) => {
   const owned = ingredientStore.ownedIngredients.some(i => i.name === ingredientName);
@@ -62,6 +74,7 @@ const findMissingIngredients = (recipeIngredients) => {
 const addMissingIngredientsToShoppingCart = () => {
   const missingIngredients = findMissingIngredients(allIngredients.value);
   missingIngredients.forEach(ingredient => ingredientStore.addToShoppingCart(ingredient));
+  refreshIngredients();
 }
 
 watch(() => props.ingredientGroups, (newVal) => {
@@ -69,6 +82,10 @@ watch(() => props.ingredientGroups, (newVal) => {
     populateAllIngredients();
   }
 }, { deep: true })
+
+const isOwned = (ingredientName) => {
+  return ingredientStore.ownedIngredients.some(i => i.name === ingredientName);
+};
 
 onMounted(populateAllIngredients)
 </script>
@@ -106,7 +123,21 @@ onMounted(populateAllIngredients)
   padding-left: 2%;
   padding-top: 5%;
   text-align: right;
-  color: #bc6c25;
+  color: #0D99FF;
   background-color: none;
+}
+
+.ingredient-icon {
+  margin-right: 5px;
+  font-size: 20px;
+  color: #4e3d42;
+}
+
+.owned-ingredient .ingredient-icon {
+  color: green;
+}
+
+.missing-ingredient .ingredient-icon {
+  color: red;
 }
 </style>
