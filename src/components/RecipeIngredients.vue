@@ -1,10 +1,10 @@
 <template>
   <div class="ingredients mb-4">
-    <h3>Ingredient list</h3>
+    <h3 class="title">Ingredient list</h3>
     <div v-if="ingredientGroups">
       <ul v-for="ingredientList in ingredientGroups" :key="ingredientList.name">
         <li>
-          <h4>{{ ingredientList.name }}</h4>
+          <h4 class="subtitle"><b>{{ ingredientList.name }}</b></h4>
           <ul>
             <li v-for="ingredient in ingredientList.ingredientGroupIngredients" 
                 :key="ingredient.ingredient" 
@@ -15,7 +15,9 @@
         </li>
       </ul>
     </div>
-    <v-btn @click="addMissingIngredientsToShoppingCart">Add missing ingredients</v-btn>
+    <div class="button">
+      <v-btn @click="addMissingIngredientsToShoppingCart" variant="tonal">Add missing ingredients</v-btn>
+    </div>
   </div>
 </template>
 
@@ -71,14 +73,39 @@ watch(() => props.ingredientGroups, (newVal) => {
 onMounted(populateAllIngredients)
 </script>
 
-<style scoped>
-  .ingredients {
-    background-color: #bb8588
-  }
-	.owned-ingredient {
-		color: darkgreen
-	}
-	.missing-ingredient {
-		color: maroon
-	}
+<style lang="scss" scoped>
+.ingredients {
+  background-color: #efebce;
+  font-family: 'Inter', sans-serif;
+  padding: 2%;
+}
+
+.ingredients ul {
+  list-style-type: none;
+  padding-left: 2%;
+}
+
+.owned-ingredient {
+  color: darkgreen;
+}
+
+.missing-ingredient {
+  color: maroon;
+}
+
+.title {
+  padding-left: 2%;
+}
+
+.subtitle {
+  margin-top: 3%;
+}
+
+.button {
+  padding-left: 2%;
+  padding-top: 5%;
+  text-align: right;
+  color: #bc6c25;
+  background-color: none;
+}
 </style>

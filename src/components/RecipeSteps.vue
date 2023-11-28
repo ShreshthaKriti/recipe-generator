@@ -25,8 +25,19 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .steps {
     background-color: #efebce;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .steps ul {
+  list-style: inside;
+  padding: 2%;
+}
+
+  .steps h1, .steps h3, .steps p {
+    font-family: 'Inter', sans-serif;
+    padding-left: 2%;
   }
 </style>

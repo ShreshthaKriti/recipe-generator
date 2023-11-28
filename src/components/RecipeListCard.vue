@@ -32,7 +32,7 @@ const goToRecipeDetail = (id) => {
 
 <style scoped>
 .card {
-  background-color: #c5e86c;
+  background-color: #e1efc0;
   height: 100%;
 }
 
@@ -50,5 +50,6 @@ const goToRecipeDetail = (id) => {
 
 .button {
   color: var(--secondary-color);
+  margin-left: auto;
 }
 </style>

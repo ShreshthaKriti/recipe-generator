@@ -47,7 +47,7 @@ onMounted(fetchRecipes)
     font-size: 16px;
   }
   div {
-    background-color: #e1efc0;
+    background-color: white;
     font-family: 'Inter', sans-serif;
   }
 }

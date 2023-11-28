@@ -1,7 +1,7 @@
 <template>
   <v-container fluid v-if="recipeDetail && recipeDetail.media && recipeDetail.media.images['ratio_16:9']">
     <v-row>
-    <Toolbar :backButton="true"/>
+    <Toolbar :backButton="true" title="Recipe Generator"/>
     </v-row>
     <v-row>
       <v-col cols="12" md="8">
@@ -17,7 +17,6 @@
           :sortedSteps="sortedSteps"
         />
       </v-col>
-
       <v-col cols="12" md="4">
         <RecipeIngredientsVue
           :ingredientGroups="recipeDetail.ingredientGroups"
@@ -71,6 +70,16 @@
  </script>
  
  <style scoped>
+ @media screen and (max-width: 1920px) {
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+  }
+  div {
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+  }
+}
  </style>
  
  

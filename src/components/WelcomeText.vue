@@ -17,7 +17,7 @@
   color: var(--text-color-black);
   line-height: 1.6;
   padding: 1rem;
-  background-color: #c5e86c;
+  background-color: #e1efc0;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 1rem 0;
