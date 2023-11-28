@@ -20,7 +20,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn :disabled="isCartEmpty" text @click="clearCart">Clear Added Items</v-btn>
+        <!-- <v-btn :disabled="isCartEmpty" text @click="clearCart">Clear Added Items</v-btn> -->
         <v-btn color="primary" text @click="closeCart">Close</v-btn>
       </v-card-actions>
     </v-card>
@@ -28,8 +28,7 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, computed } from 'vue'
-  import { useRoute } from 'vue-router'
+  import { ref, computed } from 'vue'
   import { VBtn, VIcon, VCard, VCardActions, VCardText, VDialog} from 'vuetify/components'
   import { useIngredientStore } from '@/stores/ingredientStore';
 
