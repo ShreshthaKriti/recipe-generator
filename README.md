@@ -10,20 +10,25 @@ This template should help get you started developing with Vue 3 in Vite.
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## To run frontend
 
+```sh
+git checkout origin main
+```
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### To run backend
 
 ```sh
-npm run build
+cd backend
 ```
+```sh
+npm install
+```
+```sh
+npm start
