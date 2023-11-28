@@ -31,3 +31,12 @@ const goBack = () => {
   router.go(-1)
 }
 </script>
+
+<style lang="scss" scoped>
+.toolbar-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: var(--text-color-black);
+  text-align: center;
+}
+</style>
