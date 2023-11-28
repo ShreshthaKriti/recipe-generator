@@ -1,6 +1,6 @@
 <template>
   <div class="rating">
-    <div> <!-- Container for text -->
+    <div>
       <h3 class="title">Recipe Info</h3>
       <div>
         <v-icon>mdi-clock-time-five-outline</v-icon> Cooking time: {{ preparationTime }} minutes
@@ -15,7 +15,7 @@
     
     <div class="qr">
       <div v-if="url">
-        <qrcode-vue :value="url" :size="200"></qrcode-vue>
+        <qrcode-vue :value="url" :size="150"></qrcode-vue>
         <p><i>Scan the QR code to view more!</i></p>
       </div>
     </div>
@@ -47,6 +47,11 @@ const props = defineProps({
   > div {
     flex: 1;
   }
+}
+
+.rating h3 {
+  color: #4e3d42;
+  margin-bottom: 2%;
 }
 
 .qr {

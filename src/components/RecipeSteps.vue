@@ -27,7 +27,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
   .steps {
-    background-color: #efebce;
+    background-color: #e1efc0;
     font-family: 'Inter', sans-serif;
   }
 
@@ -43,5 +43,6 @@ const props = defineProps({
 
   .steps h1 {
     padding-top: 2%;
+    color: #4e3d42;
   }
 </style>

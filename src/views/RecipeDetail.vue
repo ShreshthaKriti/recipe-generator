@@ -27,6 +27,7 @@
         :rating="recipeDetail.rating.stars"
         :url="recipeDetail.url"
         />
+        <RecipeLabels :labels="recipeDetail.labels"/>
       </v-col>
     </v-row>
   </v-container>
@@ -35,11 +36,12 @@
  <script setup>
   import { ref, onMounted, computed } from 'vue'
   import { useRoute } from 'vue-router'
-  import { VImg} from 'vuetify/components'
+  import { VImg } from 'vuetify/components'
   import RecipeSteps from '../components/RecipeSteps.vue'
   import RecipeExtraInfo from '../components/RecipeExtraInfo.vue'
   import RecipeIngredientsVue from '../components/RecipeIngredients.vue'
   import Toolbar from '../components/Toolbar.vue'
+  import RecipeLabels from '../components/RecipeLabels.vue'
 
   const route = useRoute()
 
@@ -76,7 +78,7 @@
     font-size: 16px;
   }
   div {
-    background-color: rgba(239, 235, 206, 0.3);
+    background-color: white;
     font-family: 'Inter', sans-serif;
   }
 }

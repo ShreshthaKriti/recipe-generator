@@ -75,7 +75,7 @@ onMounted(populateAllIngredients)
 
 <style lang="scss" scoped>
 .ingredients {
-  background-color: #efebce;
+  background-color: #e1efc0;
   font-family: 'Inter', sans-serif;
   padding: 2%;
 }
@@ -95,6 +95,7 @@ onMounted(populateAllIngredients)
 
 .title {
   padding-left: 2%;
+  color: #4e3d42;
 }
 
 .subtitle {

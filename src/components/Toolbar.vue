@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar fixed color="#84bd00">
+  <v-toolbar fixed color="white">
       <v-btn v-if="backButton" icon @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
@@ -33,10 +33,15 @@ const goBack = () => {
 </script>
 
 <style lang="scss" scoped>
+.v-toolbar {
+  border: 2px solid var(--primary-color);
+}
+
 .toolbar-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  color: var(--text-color-black);
+  font-size: 20px;
+  color: var(--primary-color);
   text-align: center;
 }
+
 </style>

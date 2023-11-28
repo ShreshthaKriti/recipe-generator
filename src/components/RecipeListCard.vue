@@ -9,7 +9,7 @@
       </v-icon>
     </v-card-text>
     <v-card-actions>
-      <v-btn class="button" @click="goToRecipeDetail(recipe._id)">View Recipe</v-btn>
+      <v-btn class="button" @click="goToRecipeDetail(recipe._id)"><b>View Recipe</b></v-btn>
     </v-card-actions>
   </v-card>
 </template>
