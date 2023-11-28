@@ -76,7 +76,7 @@
     font-size: 16px;
   }
   div {
-    background-color: white;
+    background-color: rgba(239, 235, 206, 0.3);
     font-family: 'Inter', sans-serif;
   }
 }

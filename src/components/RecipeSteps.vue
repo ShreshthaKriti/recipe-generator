@@ -40,4 +40,8 @@ const props = defineProps({
     font-family: 'Inter', sans-serif;
     padding-left: 2%;
   }
+
+  .steps h1 {
+    padding-top: 2%;
+  }
 </style>
