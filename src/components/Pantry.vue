@@ -27,8 +27,7 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, computed } from 'vue'
-  import { useRoute } from 'vue-router'
+  import { ref} from 'vue'
   import { VBtn, VIcon, VCard, VCardActions, VCardText, VDialog} from 'vuetify/components'
   import { useIngredientStore } from '../stores/IngredientStore'
 

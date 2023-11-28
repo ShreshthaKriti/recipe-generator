@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { computed, reactive, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
 
 const ownedIngredients = [
   { name: 'Blumenkohl', quantity: 2, unit: 'g' },
