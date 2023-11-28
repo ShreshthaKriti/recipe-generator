@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar fixed color="#adc178">
+  <v-toolbar fixed color="#84bd00">
       <v-btn v-if="backButton" icon @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>

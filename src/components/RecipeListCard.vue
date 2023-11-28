@@ -1,15 +1,15 @@
 <template>
-  <v-card>
+  <v-card class="card">
     <v-img :src="recipe.media.images['ratio_16:9'].url" v-if="recipe.media.images['ratio_16:9']" cover></v-img>
-    <v-card-title>{{ recipe.title }}</v-card-title>
-    <v-card-subtitle>{{ recipe.media.images['ratio_1:1'].caption }}</v-card-subtitle>
-    <v-card-text>
-      <v-icon v-for="star in recipe.rating.stars" :key="star" color="yellow">
+    <v-card-title class="title">{{ recipe.title }}</v-card-title>
+    <v-card-subtitle class="subtitle">{{ recipe.media.images['ratio_1:1'].caption }}</v-card-subtitle>
+    <v-card-text class="title">
+      <v-icon v-for="star in recipe.rating.stars" :key="star" color="#4e3d42">
         mdi-star
       </v-icon>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="primary" @click="goToRecipeDetail(recipe._id)">View Recipe</v-btn>
+      <v-btn class="button" @click="goToRecipeDetail(recipe._id)">View Recipe</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -31,4 +31,24 @@ const goToRecipeDetail = (id) => {
 </script>
 
 <style scoped>
+.card {
+  background-color: #c5e86c;
+  height: 100%;
+}
+
+.title {
+  color: #4e3d42;
+  size: 15px;
+}
+
+.subtitle {
+  color: var(--text-color-black);
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip; 
+}
+
+.button {
+  color: var(--secondary-color);
+}
 </style>

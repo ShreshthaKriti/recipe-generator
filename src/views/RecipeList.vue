@@ -4,6 +4,11 @@
       <Toolbar title="Recipe Generator"/>
     </v-row>
     <v-row>
+      <v-col>
+        <WelcomeText/>
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col cols="12" sm="6" md="4" v-for="recipe in recipes" :key="recipe.id">
         <RecipeListCard :recipe="recipe" />
       </v-col>
@@ -15,6 +20,7 @@
 import { ref, onMounted } from 'vue'
 import Toolbar from '../components/Toolbar.vue'
 import RecipeListCard from '../components/RecipeListCard.vue'
+import WelcomeText from '../components/WelcomeText.vue'
 
 const recipes = ref([])
 
@@ -41,7 +47,7 @@ onMounted(fetchRecipes)
     font-size: 16px;
   }
   div {
-    background-color: var(--primary-color);
+    background-color: #e1efc0;
     font-family: 'Inter', sans-serif;
   }
 }
